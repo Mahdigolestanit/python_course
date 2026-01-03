@@ -1,0 +1,33 @@
+
+def get_mean(list_of_scores):
+    if len(list_of_scores) == 0:
+        return 0
+    total = sum(list_of_scores)
+    return total / len(list_of_scores)
+
+
+n = int(input("Chand dars dari? "))
+
+all_marks = []
+counter = 0
+
+while counter < n:
+    score = float(input(f"Nomreye dars {counter + 1}: "))
+    all_marks.append(score)
+    counter += 1
+
+
+final_avg = get_mean(all_marks)
+
+print("-" * 20)
+print(f moadel shoma:”{final_avg: .1f}")
+
+
+if final_avg > 16.99:
+    status = "Aali"
+elif 12 <= final_avg < 17:
+    status = "Pass"
+else:
+    status = "Mashroot (Niaz be talash bishtar)"
+
+print(f"Vaziyat nahaee: {status}")
