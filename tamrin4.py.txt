@@ -1,0 +1,30 @@
+
+class Product:
+    def __init__(self, name, writer, cost):
+        self.name = name       
+        self.writer = writer    
+        self.cost = cost       
+
+    def show_info(self): 
+        print("-" * 25)
+        print(f"نام اثر: {self.name}")
+        print(f"نویسنده: {self.writer}")
+        print(f"قیمت نهایی: {self.cost:,} تومان")
+        print("-" * 25)
+
+    def set_off(self, percentage): 
+        self.cost = self.cost * (100 - percentage) / 100
+
+
+item1 = Product("جنایت و مکافات", "داستایوفسکی", 100000)
+item2 = Product("صد سال تنهایی", "مارکز", 150000)
+
+print("اطلاعات اولیه کتاب اول:")
+item1.show_info()
+
+print("اعمال ۱۵ درصد تخفیف روی کتاب دوم...")
+item2.set_off(15)
+
+print("گزارش نهایی:")
+item1.show_info()
+item2.show_info()
