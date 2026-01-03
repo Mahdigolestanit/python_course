@@ -1,0 +1,5 @@
+1  name=input("what is your name ?"))
+2    year=int(input("what is the date of your age ?"))
+3
+4    x=2024-years
+5    print("hi ",name," your age is: ",x)
