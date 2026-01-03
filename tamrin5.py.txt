@@ -1,0 +1,42 @@
+
+
+
+class Transport:
+    def __init__(self, model, manufacture_date):   
+        self.model = model
+        self.m_date = manufacture_date
+
+    def show_details(self):
+        print(f"Model Name: {self.model}")
+        print(f"Prod. Year: {self.m_date}")
+
+
+class Sedan(Transport):
+    def __init__(self, model, manufacture_date, door_count):   
+        super().__init__(model, manufacture_date)
+        self.doors = door_count
+
+    def show_details(self):
+        super().show_details()
+        print(f"Doors:      {self.doors}")
+
+
+class Bike(Transport):
+    def __init__(self, model, manufacture_date, side_box):   
+        super().__init__(model, manufacture_date)
+        self.is_sidecar = side_box
+
+    def show_details(self):
+        super().show_details()
+        print(f"Sidecar:    {self.is_sidecar}")
+
+
+obj1 = Transport("Generic", "1990")
+obj2 = Sedan("Toyota", "2015", 4)
+obj3 = Bike("Honda", "2020", "No")
+
+obj1.show_details()
+print("=" * 15)
+obj2.show_details()
+print("=" * 15)
+obj3.show_details()
