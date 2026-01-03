@@ -1,0 +1,59 @@
+
+
+import csv
+
+
+    def __init__(self, full_name, mobile):
+        self.full_name = full_name
+        
+        if not str(mobile).isdecimal():
+            raise ValueError("شماره باید فقط عدد باشد")
+        self.mobile = mobile
+
+
+    def __init__(self):
+        self.data_list = [] # تغییر نام از contacts به data_list
+    
+    def insert(self, n, p):
+        entry = UserContact(n, p)
+        self.data_list.append(entry)
+        print(f"ثبت شد: {n}")
+    
+    def commit_to_file(self):
+        try:
+            with open("data_store.csv", "w", newline="", encoding="utf-8-sig") as f:
+                ptr = csv.writer(f)
+                ptr.writerow(["Name", "Phone"])
+                for item in self.data_list:
+                    ptr.writerow([item.full_name, item.mobile])
+                print("ذخیره‌سازی موفقیت‌آمیز بود.")
+        except Exception as e:
+            print(f"خطای سیستمی: {e}")
+
+
+app = ManageContacts()
+
+while True:
+    print("\n--- منوی مدیریت ---")
+    print("1) افزودن فرد")
+    print("2) نمایش همه")
+    print("3) خروج و ذخیره")
+    
+    cmd = input("انتخاب: ")
+    
+    if cmd == "1":
+        name_in = input("نام: ")
+        phone_in = input("تلفن: ")
+        try:
+            app.insert(name_in, phone_in)
+        except ValueError as err:
+            print(err)
+    
+    elif cmd == "2":
+        print("\nلیست موجود:")
+        for idx, obj in enumerate(app.data_list, 1):
+            print(f"{idx}- {obj.full_name} : {obj.mobile}")
+            
+    elif cmd == "3":
+        app.commit_to_file()
+        break
