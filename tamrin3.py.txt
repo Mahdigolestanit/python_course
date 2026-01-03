@@ -1,0 +1,28 @@
+
+
+class_registry = [
+    {"id_code": 101, "fullname": "Ali", "scores": [18, 19, 20]},
+    {"id_code": 102, "fullname": "Zahra", "scores": [15, 14, 16.5]},
+    {"id_code": 103, "fullname": "Reza", "scores": [12, 13, 11.5]},
+]
+
+
+def get_score_average(person_info):
+    
+    vals = person_info.get("scores")
+    
+   
+    if not vals:
+        return 0
+    
+    result = sum(vals) / len(vals)
+    return result
+
+
+for item in class_registry:
+   
+    average_val = get_score_average(item)
+    
+   
+    name = item["fullname"]
+    print(f"Name: {name:10} | Average: {average_val:.1f}")
